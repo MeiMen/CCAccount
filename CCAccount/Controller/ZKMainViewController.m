@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *accountLabel;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *groupBtn;
-@property (nonatomic,strong) NSFetchedResultsController *fetchedResultsController;/**< */
+@property (nonatomic,strong)NSFetchedResultsController *fetchedResultsController;/**< */
 @property(nonatomic,assign)NSInteger groupStyle;
 @property(nonatomic,strong)NSArray  * groupStyles;/**<  */
 @property (nonatomic,strong) NSMutableArray *sectionAccounts;/**< */
@@ -26,6 +26,9 @@
 
 @implementation ZKMainViewController
 
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 #pragma mark - life circle
 
 - (void)viewDidLoad {

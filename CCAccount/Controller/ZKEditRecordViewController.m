@@ -103,7 +103,6 @@
     UIView *tipView = [UIView new];
     tipView.frame = CGRectMake(0, 0, 230,70);
     
-    
     tipView.backgroundColor = [UIColor clearColor];
     tipView.layer.cornerRadius = 5;
     tipView.clipsToBounds = YES;

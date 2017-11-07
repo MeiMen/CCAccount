@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -62,6 +63,9 @@
                                 <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
                                     <!--1970-01-01 11:00:00 +0000-->
                                 </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
+                                    <!--2037-12-31 11:00:00 +0000-->
+                                </date>
                                 <locale key="locale" localeIdentifier="zh_CN"/>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jfh-0k-EpB">
@@ -111,8 +115,8 @@
                             <outletCollection property="gestureRecognizers" destination="bVC-TX-sZe" appends="YES" id="XBC-FR-bwb"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Add" id="fvw-wz-8bX">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="SED-rM-9iC">
+                    <navigationItem key="navigationItem" id="fvw-wz-8bX">
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="SED-rM-9iC">
                             <connections>
                                 <action selector="saveAction:" destination="2mt-D3-Aux" id="Vz4-GT-yDj"/>
                             </connections>
@@ -234,9 +238,8 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Crystal" id="6m8-i7-Hb4">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="UGu-5x-mSI"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="fQp-Ku-hAO"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fxR-j8-2wM">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="UGu-5x-mSI"/>
+                        <barButtonItem key="rightBarButtonItem" title="添加" id="fxR-j8-2wM">
                             <connections>
                                 <segue destination="2mt-D3-Aux" kind="push" id="Sex-fs-u5b"/>
                             </connections>

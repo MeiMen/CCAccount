@@ -107,20 +107,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		842345C31FB0628700AF5973 /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tools;
-			sourceTree = "<group>";
-		};
-		842345D41FB06A4700AF5973 /* DataSource */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DataSource;
-			sourceTree = "<group>";
-		};
 		843B4C8A1FB034E400A8D76E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,13 +119,6 @@
 				04FF66CB1FB0A97A000C7EEE /* Records+CoreDataProperties.m */,
 			);
 			path = CoreData;
-			sourceTree = "<group>";
-		};
-		843B4C911FB0357D00A8D76E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		84E949151FB00B1F00D20D12 = {
@@ -165,12 +144,9 @@
 		84E949201FB00B1F00D20D12 /* CCAccount */ = {
 			isa = PBXGroup;
 			children = (
-				842345C31FB0628700AF5973 /* Tools */,
 				843B4C8A1FB034E400A8D76E /* CoreData */,
-				843B4C911FB0357D00A8D76E /* Model */,
 				84E949611FB02B5F00D20D12 /* View */,
 				84E949601FB02B4200D20D12 /* Controller */,
-				842345D41FB06A4700AF5973 /* DataSource */,
 				84E949211FB00B1F00D20D12 /* AppDelegate.h */,
 				84E949221FB00B1F00D20D12 /* AppDelegate.m */,
 				84E949271FB00B1F00D20D12 /* Main.storyboard */,
