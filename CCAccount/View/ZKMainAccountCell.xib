@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ZKMainAccountCell" id="KGk-i7-Jjw" customClass="ZKMainAccountCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="花钱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpm-qH-i9s">
+                        <rect key="frame" x="8" y="8" width="160" height="27"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4563.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnK-yr-JzF">
+                        <rect key="frame" x="168" y="8" width="144" height="27.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="TnK-yr-JzF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="BG3-un-sum"/>
+                    <constraint firstItem="TnK-yr-JzF" firstAttribute="leading" secondItem="dpm-qH-i9s" secondAttribute="trailing" id="Fs2-oz-5gw"/>
+                    <constraint firstItem="dpm-qH-i9s" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.5" id="WrY-il-HxF"/>
+                    <constraint firstItem="TnK-yr-JzF" firstAttribute="leading" secondItem="dpm-qH-i9s" secondAttribute="trailing" id="cba-ex-Suj"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="TnK-yr-JzF" secondAttribute="bottom" id="jHM-ng-wgl"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="TnK-yr-JzF" secondAttribute="trailing" id="lkM-Xh-43i"/>
+                    <constraint firstItem="dpm-qH-i9s" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="rnr-ai-2EA"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="dpm-qH-i9s" secondAttribute="bottom" id="wAn-6S-sI4"/>
+                    <constraint firstItem="dpm-qH-i9s" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="zMB-nX-eTD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="amountLabel" destination="TnK-yr-JzF" id="29S-Od-IZL"/>
+                <outlet property="purposeLabel" destination="dpm-qH-i9s" id="FKN-fI-0xb"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
