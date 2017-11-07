@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Records+CoreDataClass.h"
 
 @interface ZKEditRecordViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *amountTF;
 @property (weak, nonatomic) IBOutlet UILabel *dateLab;
 @property (weak, nonatomic) IBOutlet UITextField *purposeTF;
 @property (weak, nonatomic) IBOutlet UIDatePicker *dataPicker;
+
+@property (nonatomic,strong) Records *record;/**< */
+
 
 @end

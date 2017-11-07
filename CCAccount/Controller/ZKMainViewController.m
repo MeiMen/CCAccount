@@ -11,33 +11,45 @@
 #import "ZKCoreDataManager.h"
 #import "Records+CoreDataClass.h"
 #import "ZKMainAccountCell.h"
-
+#import "ZKEditRecordViewController.h"
 
 @interface ZKMainViewController ()<UITableViewDelegate,UITableViewDataSource,NSFetchedResultsControllerDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *accountLabel;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *groupBtn;
 @property (nonatomic,strong) NSFetchedResultsController *fetchedResultsController;/**< */
 @property(nonatomic,assign)NSInteger groupStyle;
-@property(nonatomic,strong)NSArray  * groupStyles;/**< <#description#> */
+@property(nonatomic,strong)NSArray  * groupStyles;/**<  */
+@property (nonatomic,strong) NSMutableArray *sectionAccounts;/**< */
 
 @end
 
 @implementation ZKMainViewController
 
+#pragma mark - life circle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
     self.tableView.backgroundColor = [UIColor clearColor];
     [self.tableView registerNib:[UINib nibWithNibName:@"ZKMainAccountCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ZKMainAccountCell"];
-    self.groupStyles = @[@"日",@"月",@"年"];
-    [self.groupBtn setTitle:self.groupStyles[self.groupStyle] forState:UIControlStateNormal];
+    self.tableView.tableFooterView = [UIView new];
     
+    self.groupStyles = @[@"日",@"月",@"年"];
+    [self.groupBtn setTitle:self.groupStyles[self.groupStyle] forState:UIControlStateNormal];   
 }
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    NSLog(@"%@",[[ZKCoreDataManager shareInstance] query]);
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self fetchedResultsController:@"day"];
 }
+
+
+#pragma mark - Acction
 - (IBAction)groupStyleChanged:(id)sender {
+    
+ 
     self.groupStyle += 1;
     self.groupStyle %=3;
     [self.groupBtn setTitle:self.groupStyles[self.groupStyle] forState:UIControlStateNormal];
@@ -55,13 +67,37 @@
         default:
             break;
     }
-    
-    
 }
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
-    [self.tableView reloadData];
+- (void)fetchSectionTitles{
+    [self.sectionAccounts removeAllObjects];
+    self.sectionAccounts = [NSMutableArray array];
+    __block CGFloat account = 0;
+    [self.fetchedResultsController.sections enumerateObjectsUsingBlock:
+     ^(id<NSFetchedResultsSectionInfo>  _Nonnull section, NSUInteger idx, BOOL * _Nonnull stop) {
+        __block CGFloat sum = 0;
+        [section.objects enumerateObjectsUsingBlock:
+         ^(Records*  record, NSUInteger idx, BOOL * _Nonnull stop) {
+            sum += record.amount;
+        }];
+        NSString *title = [NSString stringWithFormat:
+                           @"合计：%.2f",sum];
+        account += sum;
+        [self.sectionAccounts addObject:title];
+    }];
+    
+    self.accountLabel.text =
+    [NSString stringWithFormat:@"总计：%.2f",account];
 }
+
+#pragma mark - NSFetchedResultsControllerDelegate
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
+    [self fetchSectionTitles];
+    [self.tableView reloadData];
+   
+    
+}
+#pragma mark - UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
     return [[self.fetchedResultsController sections] count];
@@ -81,15 +117,35 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     ZKMainAccountSectionView *sectionView = (ZKMainAccountSectionView*)[[NSBundle mainBundle] loadNibNamed:@"ZKMainAccountSectionView" owner:nil options:nil].lastObject;
-    sectionView.titleLabel.text = [self.fetchedResultsController sections][section].name;
+    sectionView.titleLabel.text = self.fetchedResultsController.sections[section].name;
+    sectionView.accountLabel.text = self.sectionAccounts[section];
+
     return sectionView;
+
+}
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return @"删除";
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // 删除托管对象
+        Records *record = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [record deleteObj];
+    }
+   
     
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 30;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    ZKEditRecordViewController *vc =  [self.storyboard  instantiateViewControllerWithIdentifier:@"ZKEditRecordViewController" ];
+    vc.record = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [self.navigationController pushViewController:vc animated:YES];
 }
-
 
 - (void)fetchedResultsController:(NSString *)sectionName{
     NSFetchRequest *fetchRequest = [Records fetchRequest];
@@ -102,27 +158,8 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
+    [self fetchSectionTitles];
     [self.tableView reloadData];
-}
-
-
-- (NSFetchedResultsController *)fetchedResultsController{
-    if (_fetchedResultsController) {
-        return _fetchedResultsController;
-    }
-    NSFetchRequest *fetchRequest = [Records fetchRequest];
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]];
-    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[ZKCoreDataManager shareInstance].managerContext sectionNameKeyPath:@"day" cacheName:nil];
-    _fetchedResultsController.delegate = self;
-    NSError *error = NULL;
-    
-    if (![_fetchedResultsController performFetch:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    
-    return _fetchedResultsController;
-    
 }
 
 

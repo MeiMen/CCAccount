@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		04FF66CC1FB0A97A000C7EEE /* Records+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FF66C91FB0A97A000C7EEE /* Records+CoreDataClass.m */; };
 		04FF66CD1FB0A97A000C7EEE /* Records+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FF66CB1FB0A97A000C7EEE /* Records+CoreDataProperties.m */; };
+		842345D71FB1607E00AF5973 /* ZKNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 842345D61FB1607E00AF5973 /* ZKNavigationBar.m */; };
+		842345DA1FB19A7C00AF5973 /* launcimg1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 842345D81FB19A7800AF5973 /* launcimg1.jpg */; };
 		843B4C891FB0328E00A8D76E /* ChanSa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 843B4C871FB0328D00A8D76E /* ChanSa.xcdatamodeld */; };
 		843B4C941FB0593F00A8D76E /* ZKCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 843B4C931FB0593F00A8D76E /* ZKCoreDataManager.m */; };
 		84E949231FB00B1F00D20D12 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E949221FB00B1F00D20D12 /* AppDelegate.m */; };
@@ -48,6 +50,9 @@
 		04FF66C91FB0A97A000C7EEE /* Records+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Records+CoreDataClass.m"; sourceTree = "<group>"; };
 		04FF66CA1FB0A97A000C7EEE /* Records+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Records+CoreDataProperties.h"; sourceTree = "<group>"; };
 		04FF66CB1FB0A97A000C7EEE /* Records+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Records+CoreDataProperties.m"; sourceTree = "<group>"; };
+		842345D51FB1607E00AF5973 /* ZKNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZKNavigationBar.h; path = CCAccount/View/ZKNavigationBar.h; sourceTree = SOURCE_ROOT; };
+		842345D61FB1607E00AF5973 /* ZKNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ZKNavigationBar.m; path = CCAccount/View/ZKNavigationBar.m; sourceTree = SOURCE_ROOT; };
+		842345D81FB19A7800AF5973 /* launcimg1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = launcimg1.jpg; sourceTree = "<group>"; };
 		843B4C881FB0328D00A8D76E /* ChanSa.xcdatamodel */ = {isa = PBXFileReference; explicitFileType = wrapper.xcdatamodel; path = ChanSa.xcdatamodel; sourceTree = "<group>"; };
 		843B4C921FB0593F00A8D76E /* ZKCoreDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKCoreDataManager.h; sourceTree = "<group>"; };
 		843B4C931FB0593F00A8D76E /* ZKCoreDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKCoreDataManager.m; sourceTree = "<group>"; };
@@ -171,6 +176,7 @@
 				84E949271FB00B1F00D20D12 /* Main.storyboard */,
 				84E9492A1FB00B1F00D20D12 /* Assets.xcassets */,
 				84E9492C1FB00B1F00D20D12 /* LaunchScreen.storyboard */,
+				842345D81FB19A7800AF5973 /* launcimg1.jpg */,
 				84E9492F1FB00B1F00D20D12 /* Info.plist */,
 				84E949301FB00B1F00D20D12 /* main.m */,
 			);
@@ -209,6 +215,8 @@
 		84E949611FB02B5F00D20D12 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				842345D51FB1607E00AF5973 /* ZKNavigationBar.h */,
+				842345D61FB1607E00AF5973 /* ZKNavigationBar.m */,
 				84E949581FB020E600D20D12 /* ZKMainAccountSectionView.h */,
 				84E949591FB020E600D20D12 /* ZKMainAccountSectionView.m */,
 				84E9495B1FB020F700D20D12 /* ZKMainAccountSectionView.xib */,
@@ -329,6 +337,7 @@
 				84E9492E1FB00B1F00D20D12 /* LaunchScreen.storyboard in Resources */,
 				84E9495C1FB020F700D20D12 /* ZKMainAccountSectionView.xib in Resources */,
 				84E949571FB0130800D20D12 /* ZKMainAccountCell.xib in Resources */,
+				842345DA1FB19A7C00AF5973 /* launcimg1.jpg in Resources */,
 				84E9492B1FB00B1F00D20D12 /* Assets.xcassets in Resources */,
 				84E949291FB00B1F00D20D12 /* Main.storyboard in Resources */,
 			);
@@ -358,6 +367,7 @@
 				84E949261FB00B1F00D20D12 /* ZKMainViewController.m in Sources */,
 				84E949561FB0130800D20D12 /* ZKMainAccountCell.m in Sources */,
 				04FF66CC1FB0A97A000C7EEE /* Records+CoreDataClass.m in Sources */,
+				842345D71FB1607E00AF5973 /* ZKNavigationBar.m in Sources */,
 				84E949311FB00B1F00D20D12 /* main.m in Sources */,
 				04FF66CD1FB0A97A000C7EEE /* Records+CoreDataProperties.m in Sources */,
 				84E9495A1FB020E600D20D12 /* ZKMainAccountSectionView.m in Sources */,
@@ -467,7 +477,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -516,7 +526,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -527,11 +537,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MNXP4L8Y25;
 				INFOPLIST_FILE = CCAccount/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ZK.CCAccount;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -540,11 +554,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MNXP4L8Y25;
 				INFOPLIST_FILE = CCAccount/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ZK.CCAccount;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

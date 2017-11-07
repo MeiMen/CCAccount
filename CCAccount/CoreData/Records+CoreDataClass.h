@@ -14,7 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Records : NSManagedObject
 + (Records *)newRecords;
++ (float)totalAmount;
 - (void)save;
+- (void)deleteObj;
+
 @end
 
 NS_ASSUME_NONNULL_END

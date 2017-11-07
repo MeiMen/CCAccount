@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ZKMainAccountSectionView : UIView
+@property (weak, nonatomic) IBOutlet UILabel *accountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end

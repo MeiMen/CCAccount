@@ -11,7 +11,8 @@
 
 
 @interface ZKEditRecordViewController ()
-
+@property (nonatomic,strong) UILabel *tip;/**< */
+@property (nonatomic,strong) UIView *tipView;/**< */
 @end
 
 @implementation ZKEditRecordViewController
@@ -22,11 +23,39 @@
     [self.dataPicker addTarget:self action:@selector(dateChanged) forControlEvents:UIControlEventValueChanged ];
     [self.dataPicker addTarget:self action:@selector(tapOnView:) forControlEvents:UIControlEventAllTouchEvents];
     [self dateChanged];
+    [self setTipView];
+    [self setInitialData];
 }
 
-- (IBAction)saveAction:(id)sender {
+- (void)setInitialData{
     
-    Records *record = [Records newRecords] ;
+    if (!self.record) {
+        return;
+    }
+    self.purposeTF.text = self.record.purpose;
+    self.amountTF.text = [NSString stringWithFormat:@"%.2f",self.record.amount];
+    self.dataPicker.date = self.record.date;
+    self.dateLab.text = self.record.day;
+   
+}
+- (IBAction)saveAction:(id)sender {
+
+    if (self.purposeTF.text.length<=0) {
+        [self showTipViewWithTips:@"这笔巨款 \"用途\" 还没记哟"];
+        return;
+    }
+    if (self.amountTF.text.length<=0) {
+        [self showTipViewWithTips:@"巨款再巨也有个数吧"];
+        return;
+    }
+    
+    Records *record ;
+    if (self.record) {
+        record = self.record;
+    }else{
+         //如果不是编辑，生成record
+        record = [Records newRecords];
+    }
     record.purpose = self.purposeTF.text;
     record.desc = @"";
     record.amount = [self.amountTF.text floatValue];
@@ -37,12 +66,13 @@
     [record save];
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 - (IBAction)tapOnView:(UITapGestureRecognizer *)sender {
     [self.view endEditing:YES];
 }
 
--(void)dateChanged{
 
+-(void)dateChanged{
     NSString *dateString = [self formatDate:@"yyyy年MM月dd日"];
     dateString = [dateString stringByAppendingString:[self getWeekDayFordate:self.dataPicker.date]];
     //打印显示日期时间
@@ -66,6 +96,48 @@
     
     NSString *weekStr = [weekday objectAtIndex:components.weekday];
     return weekStr;
+}
+
+
+- (void)setTipView{
+    UIView *tipView = [UIView new];
+    tipView.frame = CGRectMake(0, 0, 230,70);
+    
+    
+    tipView.backgroundColor = [UIColor clearColor];
+    tipView.layer.cornerRadius = 5;
+    tipView.clipsToBounds = YES;
+    
+    UIView *bgView = [[UIView alloc] initWithFrame:tipView.bounds];
+    bgView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+    [tipView addSubview:bgView];
+    
+    UILabel *tip = [UILabel new];
+    tip.textColor = [UIColor whiteColor];
+    tip.font = [UIFont systemFontOfSize:16];
+    tip.textAlignment = NSTextAlignmentCenter;
+    tip.backgroundColor = [UIColor clearColor];
+    tip.frame = tipView.bounds;
+    [tipView addSubview:tip];
+    
+    self.tip = tip;
+    self.tipView = tipView;
+    tipView.center = CGPointMake(self.view.center.x, self.view.center.y-self.navigationController.navigationBar.frame.size.height-40);
+    
+}
+
+- (void)showTipViewWithTips:(NSString *)tips{
+    self.tip.text = tips;
+    [self.view addSubview:self.tipView];
+    [UIView animateWithDuration:0.5 animations:^{
+        self.tipView.alpha = 1;
+    }completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.5 delay:0.7 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.tipView.alpha = 0;
+        } completion:^(BOOL finished) {
+            [self.tipView removeFromSuperview];
+        }];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -15,24 +15,34 @@
             <rect key="frame" x="0.0" y="0.0" width="352" height="30"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11月3日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqY-2T-M4p">
-                    <rect key="frame" x="10" y="0.0" width="342" height="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="11月3日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqY-2T-M4p">
+                    <rect key="frame" x="10" y="0.0" width="294.5" height="30"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyF-xx-Y1n">
+                    <rect key="frame" x="304.5" y="0.0" width="37.5" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.55532145025243895" green="0.74619608270769711" blue="0.97078450520833337" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
                 <constraint firstItem="MqY-2T-M4p" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="43U-cx-4qg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VyF-xx-Y1n" secondAttribute="trailing" constant="10" id="Mo5-VA-obD"/>
                 <constraint firstItem="MqY-2T-M4p" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="Nx3-0B-Hx6"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MqY-2T-M4p" secondAttribute="trailing" id="Oo3-aL-Wod"/>
+                <constraint firstItem="VyF-xx-Y1n" firstAttribute="leading" secondItem="MqY-2T-M4p" secondAttribute="trailing" id="Oo3-aL-Wod"/>
+                <constraint firstItem="VyF-xx-Y1n" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="frX-Gu-JI0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="VyF-xx-Y1n" secondAttribute="bottom" id="nUX-eP-K6f"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="MqY-2T-M4p" secondAttribute="bottom" id="pzh-OT-MU2"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="accountLabel" destination="VyF-xx-Y1n" id="QF5-GJ-YEZ"/>
                 <outlet property="titleLabel" destination="MqY-2T-M4p" id="HgD-97-gm7"/>
             </connections>
             <point key="canvasLocation" x="-8" y="276"/>
