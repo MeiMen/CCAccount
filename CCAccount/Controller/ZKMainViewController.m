@@ -12,7 +12,7 @@
 #import "Records+CoreDataClass.h"
 #import "ZKMainAccountCell.h"
 #import "ZKEditRecordViewController.h"
-
+#import "ZKCoreDataManager.h"
 @interface ZKMainViewController ()<UITableViewDelegate,UITableViewDataSource,NSFetchedResultsControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *accountLabel;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -40,9 +40,12 @@
     self.tableView.tableFooterView = [UIView new];
     
     self.groupStyles = @[@"日",@"月",@"年"];
-    [self.groupBtn setTitle:self.groupStyles[self.groupStyle] forState:UIControlStateNormal];   
+    [self.groupBtn setTitle:self.groupStyles[self.groupStyle] forState:UIControlStateNormal];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(saveAction) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
 }
-
+- (void)saveAction{
+    NSLog(@"昌吉");
+}
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self fetchedResultsController:@"day"];
@@ -156,6 +159,7 @@
     _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[ZKCoreDataManager shareInstance].managerContext sectionNameKeyPath:sectionName cacheName:nil];
     _fetchedResultsController.delegate = self;
     NSError *error = NULL;
+    
     
     if (![_fetchedResultsController performFetch:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);

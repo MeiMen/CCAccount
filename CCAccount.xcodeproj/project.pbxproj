@@ -11,6 +11,7 @@
 		04FF66CD1FB0A97A000C7EEE /* Records+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FF66CB1FB0A97A000C7EEE /* Records+CoreDataProperties.m */; };
 		842345D71FB1607E00AF5973 /* ZKNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 842345D61FB1607E00AF5973 /* ZKNavigationBar.m */; };
 		842345DA1FB19A7C00AF5973 /* launcimg1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 842345D81FB19A7800AF5973 /* launcimg1.jpg */; };
+		842345E41FB42D1800AF5973 /* ZKLocalAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842345E21FB42D1800AF5973 /* ZKLocalAuthViewController.m */; };
 		843B4C891FB0328E00A8D76E /* ChanSa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 843B4C871FB0328D00A8D76E /* ChanSa.xcdatamodeld */; };
 		843B4C941FB0593F00A8D76E /* ZKCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 843B4C931FB0593F00A8D76E /* ZKCoreDataManager.m */; };
 		84E949231FB00B1F00D20D12 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E949221FB00B1F00D20D12 /* AppDelegate.m */; };
@@ -53,6 +54,9 @@
 		842345D51FB1607E00AF5973 /* ZKNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZKNavigationBar.h; path = CCAccount/View/ZKNavigationBar.h; sourceTree = SOURCE_ROOT; };
 		842345D61FB1607E00AF5973 /* ZKNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ZKNavigationBar.m; path = CCAccount/View/ZKNavigationBar.m; sourceTree = SOURCE_ROOT; };
 		842345D81FB19A7800AF5973 /* launcimg1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = launcimg1.jpg; sourceTree = "<group>"; };
+		842345E11FB42D1800AF5973 /* ZKLocalAuthViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKLocalAuthViewController.h; sourceTree = "<group>"; };
+		842345E21FB42D1800AF5973 /* ZKLocalAuthViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKLocalAuthViewController.m; sourceTree = "<group>"; };
+		842345E61FB436DF00AF5973 /* CCAccount.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CCAccount.entitlements; sourceTree = "<group>"; };
 		843B4C881FB0328D00A8D76E /* ChanSa.xcdatamodel */ = {isa = PBXFileReference; explicitFileType = wrapper.xcdatamodel; path = ChanSa.xcdatamodel; sourceTree = "<group>"; };
 		843B4C921FB0593F00A8D76E /* ZKCoreDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKCoreDataManager.h; sourceTree = "<group>"; };
 		843B4C931FB0593F00A8D76E /* ZKCoreDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKCoreDataManager.m; sourceTree = "<group>"; };
@@ -107,6 +111,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		842345E71FB4373100AF5973 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		843B4C8A1FB034E400A8D76E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +139,7 @@
 				84E949391FB00B2000D20D12 /* CCAccountTests */,
 				84E949441FB00B2000D20D12 /* CCAccountUITests */,
 				84E9491F1FB00B1F00D20D12 /* Products */,
+				842345E71FB4373100AF5973 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,6 +156,7 @@
 		84E949201FB00B1F00D20D12 /* CCAccount */ = {
 			isa = PBXGroup;
 			children = (
+				842345E61FB436DF00AF5973 /* CCAccount.entitlements */,
 				843B4C8A1FB034E400A8D76E /* CoreData */,
 				84E949611FB02B5F00D20D12 /* View */,
 				84E949601FB02B4200D20D12 /* Controller */,
@@ -184,6 +197,8 @@
 				84E949251FB00B1F00D20D12 /* ZKMainViewController.m */,
 				84E9495D1FB02B3800D20D12 /* ZKEditRecordViewController.h */,
 				84E9495E1FB02B3800D20D12 /* ZKEditRecordViewController.m */,
+				842345E11FB42D1800AF5973 /* ZKLocalAuthViewController.h */,
+				842345E21FB42D1800AF5973 /* ZKLocalAuthViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -272,6 +287,17 @@
 					84E9491D1FB00B1F00D20D12 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.DataProtection = {
+								enabled = 0;
+							};
+							com.apple.WAC = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					84E949351FB00B2000D20D12 = {
 						CreatedOnToolsVersion = 9.0;
@@ -351,6 +377,7 @@
 				84E9495F1FB02B3800D20D12 /* ZKEditRecordViewController.m in Sources */,
 				84E949231FB00B1F00D20D12 /* AppDelegate.m in Sources */,
 				843B4C941FB0593F00A8D76E /* ZKCoreDataManager.m in Sources */,
+				842345E41FB42D1800AF5973 /* ZKLocalAuthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,6 +540,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CCAccount/CCAccount.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -530,6 +558,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CCAccount/CCAccount.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
